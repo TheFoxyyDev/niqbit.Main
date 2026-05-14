@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-defgreen: #4ade80;
+    --color-background: #0A0D12;
+    --color-highlight: #0D1017;
+    --color-border: #1E2530;
+    --color-panel: #10131C;
+}
+
+@utility highlight {
+    background-color: #ff0000;
+}
+
+@utility highlight2 {
+    background-color: #00ff00;
+}
+
+@utility no-scrollbar {
+    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
+html, body, #root {
+    scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+ruffle-player {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+
+ruffle-player canvas {
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none;
+}
