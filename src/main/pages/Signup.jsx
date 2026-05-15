@@ -26,7 +26,7 @@ function Signup() {
             return
         }
 
-        const resp = await fetch(`${BACKEND_URL}/auth/signup`, {
+        const resp = await fetch(`${BACKEND_URL}/auth/register`, {
             method: "POST",
             credentials: "include",
             headers: { 'Content-type': 'application/json' },
