@@ -7,7 +7,7 @@ import {Link, useNavigate, useSearchParams} from "react-router";
 
 function Login() {
     const navigate = useNavigate()
-    const searchParams = useSearchParams()
+    const [searchParams] = useSearchParams()
     const redirect = searchParams.get("redirect")
 
     const [email, setEmail] = useState("");
