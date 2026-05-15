@@ -3,10 +3,12 @@ import {motion} from 'framer-motion';
 import {useState} from "react";
 import {BACKEND_URL} from "../../conf.js";
 import {toast} from "../helpers/toast.js";
-import {useNavigate} from "react-router";
+import {Link, useNavigate, useSearchParams} from "react-router";
 
 function Login() {
     const navigate = useNavigate()
+    const searchParams = useSearchParams()
+    const redirect = searchParams.get("redirect")
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -37,7 +39,11 @@ function Login() {
         console.log(body)
         toast(body.short, body.message, "info", 5000)
         await new Promise(resolve => setTimeout(resolve, 200));
-        navigate("/")
+        if (redirect?.startsWith("http")) {
+            window.location.href = redirect
+        } else {
+            navigate(redirect || "/")
+        }
     }
 
     return (
@@ -55,12 +61,14 @@ function Login() {
             <div className="fixed text-white text-8xl font-mono m-5 top-[10%] sedd)lect-none">
                 log<span className="text-defgreen">in</span>
             </div>
-            <div className="relative bg-highlight w-[20%] h-[50%] border-[0.5px] border-border rounded-2xl">
+
+            {/* main div */}
+            <div className="relative bg-highlight xl:w-[20%] w-[50%] h-[50%] border-[0.5px] border-border rounded-2xl">
                 <div className="relative w-auto m-3 h-1/8">
-                    <OutlinedInput label="e-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <OutlinedInput label="e-mail" type="email" autocomplete="username" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className="relative w-auto m-3 h-1/8">
-                    <OutlinedInput label="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <OutlinedInput label="password" type="password" autocomplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -80,6 +88,7 @@ function Login() {
                     <div className="relative text-gray-500 font-mono text-3xl text-center">coming soon...</div>
                 </div>
             </div>
+            <div className="relative mt-2 text-white font-mono"><Link to="/signup" className="text-defgreen">register</Link> a new account</div>
         </div>
     )
 }

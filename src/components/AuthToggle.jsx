@@ -50,6 +50,7 @@ const AuthToggle = () => {
         }
         checkAuth()
     }, [location]);
+
     useEffect(() => {
         if (!userModal) return;
 

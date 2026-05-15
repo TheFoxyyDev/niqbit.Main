@@ -1,5 +1,7 @@
 // PERMANENT CONFIGURATION
-export const BACKEND_URL = "https://api.niqbit.com";
+export const BACKEND_URL = window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://api.niqbit.com";
 
 // TEMPORARY VARIABLES
 export let access_token = ""

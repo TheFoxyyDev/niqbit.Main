@@ -1,13 +1,14 @@
 // OutlinedInput.jsx
 // Usage: <OutlinedInput label="Email" type="email" />
 
-export default function OutlinedInput({ label, id, className = "", ...props }) {
+export default function OutlinedInput({ label, id, className = "",autocomplete , ...props }) {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, "-");
 
     return (
         <div className={`relative ${className}`}>
             <input
                 id={inputId}
+                autoComplete={autocomplete}
                 placeholder=" "
                 className="
           peer w-full px-3 pt-4 pb-2

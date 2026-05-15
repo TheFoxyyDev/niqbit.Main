@@ -3,14 +3,14 @@ import { motion } from 'framer-motion'
 function Home() {
     return (
         <div className="absolute bg-background w-full h-full">
-            <div className="absolute w-auto h-[60%] top-30 text-white text-7xl font-mono m-30">
+            <div className="absolute w-auto h-[60%] top-30 text-white text-3xl md:text-5xl xl:text-7xl font-mono m-30">
                 <div>
                     hi, i'm david.
                 </div>
                 <div>
                     i build <span className="text-defgreen"> things that last.</span>
                 </div>
-                <div className="text-2xl text-gray-600 mt-3">
+                <div className="text-lg xl:text-2xl text-gray-600 mt-3">
                     HTL student based in Austria, focused on software development.
                 </div>
                 <div className="relative w-41 pl-3 h-auto bg-highlight text-gray-400 text-lg mt-10 p-2 border-[0.5px] border-border rounded-2xl">

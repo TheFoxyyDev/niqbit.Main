@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 import {useState} from "react";
 import {BACKEND_URL, setAccessToken} from "../../conf.js";
 import {toast} from "../helpers/toast.js";
-import {useNavigate} from "react-router";
+import {Link, useNavigate} from "react-router";
 
 function Signup() {
     const navigate = useNavigate()
@@ -71,12 +71,14 @@ function Signup() {
             <div className="fixed text-white text-8xl font-mono m-5 top-[10%] select-none">
                 sign<span className="text-defgreen">up</span>
             </div>
-            <div className="relative bg-highlight w-[20%] h-[50%] border-[0.5px] border-border rounded-2xl">
+
+            {/* main div */}
+            <div className="relative bg-highlight xl:w-[20%] w-[50%] h-[50%] border-[0.5px] border-border rounded-2xl">
                 <div className="relative w-auto m-3 h-1/8">
-                    <OutlinedInput label="e-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <OutlinedInput label="e-mail" type="email" autocomplete="username" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className="relative w-auto m-3 h-1/8">
-                    <OutlinedInput label="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <OutlinedInput label="password" type="password" autocomplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -96,6 +98,7 @@ function Signup() {
                     <div className="relative text-gray-500 font-mono text-3xl text-center">coming soon...</div>
                 </div>
             </div>
+            <div className="relative mt-2 text-white font-mono"><Link to="/login" className="text-defgreen">log in</Link> with an existing account</div>
         </div>
     )
 }
